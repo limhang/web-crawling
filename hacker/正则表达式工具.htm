@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式测试</title>
+</head>
+<script src="VerbalExpressions.js"></script>
+<script type="text/javascript">
+	var tester = VerEx()
+    .startOfLine()
+    .then('http')
+    .maybe('s')
+    .then('://')
+    .maybe('www.')
+    .anythingBut(' ')
+    .endOfLine();
+
+// Create an example URL
+var testMe = 'https://www.google.com ';
+
+// Use RegExp object's native test() function
+if (tester.test(testMe)) {
+    alert('We have a correct URL'); // This output will fire
+} else {
+    alert('The URL is incorrect');
+}
+
+console.log(tester); // Outputs the actual expression used: /^(http)(s)?(\:\/\/)(www\.)?([^\ ]*)$/
+</script>
+
+<body>
+	
+</body>
+</html>
